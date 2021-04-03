@@ -114,3 +114,15 @@ We welcome contributions! Follow this [link](https://github.com/spring-cloud/spr
 Then navigate to `Intellij IDEA > Preferences` and select the Eclipse Code Formatter.  Select the `eclipse-code-formatter.xml` file for the field `Eclipse Java Formatter config file` and the file `eclipse.importorder` for the field `Import order`.
 Enable the `Eclipse code formatter` by clicking `Use the Eclipse code formatter` then click the *OK* button.
 ** NOTE: If you configure the `Eclipse Code Formatter` from `File > Other Settings > Default Settings` it will set this policy across all of your Intellij projects.
+  
+
+
+
+
+## Local changes
+
+
+2.7.1-local-master branch is created from original 2.7.1 branch and would work as the master branch for the forked repo
+
+
+
