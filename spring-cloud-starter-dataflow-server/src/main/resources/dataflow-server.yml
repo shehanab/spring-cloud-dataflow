@@ -19,7 +19,13 @@ spring:
       uri: http://localhost:8888
 
   datasource:
-    url: jdbc:h2:tcp://localhost:19092/mem:dataflow
-    username: sa
-    password:
-    driverClassName: org.h2.Driver
+    url: jdbc:oracle:thin:@localhost:1521:orcl
+    driverClassName: oracle.jdbc.driver.OracleDriver
+    username: TASK
+    password: TASK
+
+#  datasource:
+#    url: jdbc:h2:tcp://localhost:19092/mem:dataflow
+#    username: sa
+#    password:
+#    driverClassName: org.h2.Driver
