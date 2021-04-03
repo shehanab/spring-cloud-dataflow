@@ -26,6 +26,58 @@ info:
 #      user-info-uri: http://127.0.0.1:9999/me
 #      token-info-uri: http://127.0.0.1:9999/oauth/check_token
 
+spring:
+  cloud:
+    dataflow:
+      security:
+        authorization:
+          enabled: true
+          provider-role-mappings:
+            keycloak:
+              map-oauth-scopes: true
+              role-mappings:
+                ROLE_VIEW: dataflow.view
+                ROLE_CREATE: dataflow.create
+                ROLE_MANAGE: dataflow.manage
+                ROLE_DEPLOY: dataflow.deploy
+                ROLE_DESTROY: dataflow.destroy
+                ROLE_MODIFY: dataflow.modify
+                ROLE_SCHEDULE: dataflow.schedule
+  security:
+    oauth2:
+      client:
+        registration:
+          keycloak:
+            redirect-uri: '{baseUrl}/login/oauth2/code/{registrationId}'
+            authorization-grant-type: authorization_code
+            client-id: KEYCLOAK-CLIENT
+            client-name: KEYCLOAK-CLIENT
+            client-secret: a0f442f5-8c58-4220-9b48-4174476ba57a
+            scope:
+              - openid
+              - dataflow.view
+              - dataflow.deploy
+              - dataflow.destroy
+              - dataflow.manage
+              - dataflow.modify
+              - dataflow.schedule
+              - dataflow.create
+        provider:
+          keycloak:
+            jwk-set-uri: https://ulogin.domain.services/auth/realms/SsoSolution/protocol/openid-connect/certs
+            token-uri: https://ulogin.domain.services/auth/realms/SsoSolution/protocol/openid-connect/token
+            user-info-uri: https://ulogin.domain.services/auth/realms/SsoSolution/protocol/openid-connect/userinfo
+            user-name-attribute: preferred_username
+            user-info-authentication-method: validate_access_token
+            authorization-uri: https://ulogin.domain.services/auth/realms/SsoSolution/protocol/openid-connect/auth
+      resourceserver:
+        opaquetoken:
+          introspection-uri: https://ulogin.domain.services/auth/realms/SsoSolution/protocol/openid-connect/token/introspect
+          client-id: KEYCLOAK-CLIENT
+          client-secret: a0f442f5-8c58-4220-9b48-4174476ba57a
+      authorization:
+        check-token-access: isAuthenticated()
+
 # If you prefer to use Eureka to locate the Config Server, you can do that by setting
 # spring.cloud.config.discovery.enabled=true (default "false"). The net result of that is
 # that client apps all need a bootstrap.yml (or an environment variable) with the Eureka
