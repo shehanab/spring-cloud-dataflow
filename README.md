@@ -124,5 +124,11 @@ Enable the `Eclipse code formatter` by clicking `Use the Eclipse code formatter`
 
 2.7.1-local-master branch is created from original 2.7.1 branch and would work as the master branch for the forked repo
 
+2.7.1-oracle-integration
+
+2.7.1-keycloak-sso-integration
+
+2.7.1-local-scheduler
+
 
 
